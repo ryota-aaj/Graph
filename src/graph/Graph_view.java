@@ -17,7 +17,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class Graph_view extends Frame implements ActionListener,WindowListener {
 
 	private Button button1 = new Button("BarChart");
-	private Button button2 = new Button("AreaChart");
+	private Button button2 = new Button("LineChart");
 	
 	public Graph_view(){
 		addWindowListener(this);
@@ -94,17 +94,18 @@ public class Graph_view extends Frame implements ActionListener,WindowListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		DefaultCategoryDataset data = new DefaultCategoryDataset();
-		 data.addValue(300, "USA", "2005");
-		 data.addValue(500, "USA", "2006");
-		 data.addValue(120, "USA", "2007");
-		 
-		 data.addValue(200, "China", "2005");
-		 data.addValue(400, "China", "2006");
-		 data.addValue(320, "China", "2007");
-		
+
 		if(e.getSource() == button1){ 
-			JFreeChart chart = 	
+			
+			DefaultCategoryDataset data = new DefaultCategoryDataset();
+			 data.addValue(300, "USA", "2005");
+			 data.addValue(500, "USA", "2006");
+			 data.addValue(120, "USA", "2007");
+			 
+			 data.addValue(200, "China", "2005");
+			 data.addValue(400, "China", "2006");
+			 data.addValue(320, "China", "2007");
+			 JFreeChart chart = 	
 					ChartFactory.createBarChart("Import Volume",
 	                                      "Year",
 	                                       "Ton",
@@ -114,10 +115,24 @@ public class Graph_view extends Frame implements ActionListener,WindowListener {
 	                                        false,
 	                                        false);
 			  ChartPanel cpanel = new ChartPanel(chart);
-
+			  add(cpanel, BorderLayout.CENTER);	  
+			  
+			  invalidate();
+			  validate();
+			  
 	} else if(e.getSource() == button2){
-		JFreeChart chart = 
-				ChartFactory.createAreaChart("Import Volume",
+		
+		
+		DefaultCategoryDataset data = new DefaultCategoryDataset();
+		 data.addValue(300, "USA", "2005");
+		 data.addValue(500, "USA", "2006");
+		 data.addValue(120, "USA", "2007");
+		 
+		 data.addValue(200, "China", "2005");
+		 data.addValue(400, "China", "2006");
+		 data.addValue(320, "China", "2007");
+		 JFreeChart chart = 	
+				ChartFactory.createLineChart("Import Volume",
                                       "Year",
                                        "Ton",
                                        data,
@@ -126,7 +141,10 @@ public class Graph_view extends Frame implements ActionListener,WindowListener {
                                         false,
                                         false);
 		  ChartPanel cpanel = new ChartPanel(chart);
-
+		  add(cpanel, BorderLayout.CENTER);	  
+		  
+		  invalidate();
+		  validate();
 	}
 		
 	}
